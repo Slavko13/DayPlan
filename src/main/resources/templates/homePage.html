@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="eng"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{fragments/mainTemplate :: link}"></th:block>
+    <th:block th:insert="~{fragments/mainTemplate :: head/script}"></th:block>
+
+    <script th:inline="javascript">
+        var frontendData = [[${frontendData}]];
+    </script>
+
+</head>
+<body>
+    <div th:replace="~{fragments/mainTemplate.html :: header}"></div>
+    <p>Доброго времени суток приложение работает пока в очень начальном уровне тестирования</p>
+    <p>Суть его в том, чтобы спланировать день пользователю с учетом транспорта</p>
+        <div th:if = "${authStatus == false }">
+            <p>Нажмите <a href="/login">Здесь</a> чтобы зайти или зарегистрироваться.</p>
+        </div>
+        <div th:if = "${authStatus == true }">
+            <p> Нажмите <a th:href="@{/id{userId}(userId=${id})}"> тут </a> чтобы посмотреть ваш профиль </p>
+        </div>
+</body>
+</html>

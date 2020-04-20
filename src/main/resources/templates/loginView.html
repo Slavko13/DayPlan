@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="eng"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/mainTemplate :: link}"></th:block>
+    <th:block th:insert="~{fragments/mainTemplate :: head/script}"></th:block>
+</head>
+
+<body>
+<div th:replace="~{fragments/mainTemplate.html :: header}"></div>
+<div class="container">
+
+    <form method="post" action="/login/process">
+
+
+            <div th:if="${error}" class="alert alert-danger" role="alert"> Ошибка в вводе логина или пароля</div>
+
+        <div class="form-group">
+            <label for="login">Логин:</label>
+            <input type="text" class="form-control" id="login" placeholder="Логин" name="login">
+        </div>
+        <div class="form-group">
+            <label for="password">Логин:</label>
+            <input type="text" class="form-control" id="password" placeholder="Пароль" name="password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <p> Если ты у тебя нету логин, сделай  <a href="/registration">регистер</a></p>
+</div>
+</body>
+</html>

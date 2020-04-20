@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="eng"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{fragments/mainTemplate :: link}"></th:block>
+    <th:block th:insert="~{fragments/mainTemplate :: head/script}"></th:block>
+</head>
+
+<body>
+<div th:replace="~{fragments/mainTemplate.html :: header}"></div>
+    <div class="container">
+        <form method="post" action="/registration/process">
+
+                <div th:if="${haveErrors}" class="alert alert-danger" role="alert">
+                    <span th:utext="${error}"> </span>
+                </div>
+
+
+
+
+            <div class="form-group">
+                <label for="login">Логин:</label>
+                <input type="text" class="form-control" id="login" placeholder="Логин" name="login">
+            </div>
+
+            <div class="form-group">
+                <label for="firstName">Вашу фамилию:</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Ваше имя" name="firstName">
+            </div>
+
+            <div class="form-group">
+                <label for="secondName">Вашу фамилию:</label>
+                <input type="text" class="form-control" id="secondName" placeholder="Ваше имя" name="secondName">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Введите ваш пароль</label>
+                <input type="text" class="form-control" id="password" placeholder="Пароль" name="password">
+            </div>
+
+
+            <input type="submit" value="Отправить" class="btn btn-primary"/>
+
+        </form>
+
+    </div>
+</body>
+</html>
