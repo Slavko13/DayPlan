@@ -1,6 +1,7 @@
 package com.dayplan.controllers;
 import com.dayplan.domains.User;
 import com.dayplan.services.UserService;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -54,13 +55,11 @@ public class AuthenticationController {
     }
 
     @GetMapping({"/home", "/"})
-    public String viewHome(Model model, @AuthenticationPrincipal User activeUser) {
+    public String viewHome(Model model, @AuthenticationPrincipal  User activeUser) {
         HashMap<Object, Object> frontendData = new HashMap<>();
         if (activeUser != null) {
             model.addAttribute("authStatus", true);
-            model.addAttribute("id", activeUser.getId());
-            model.addAttribute("login", activeUser.getLogin());
-
+            frontendData.put("user", userService.findByLogin(activeUser.getLogin()));
         }
         else {
             model.addAttribute("id", 0);

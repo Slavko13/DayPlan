@@ -17,7 +17,7 @@
             <p>Нажмите <a href="/login">Здесь</a> чтобы зайти или зарегистрироваться.</p>
         </div>
         <div th:if = "${authStatus == true }">
-            <p> Нажмите <a th:href="@{/id{userId}(userId=${id})}"> тут </a> чтобы посмотреть ваш профиль </p>
+            <p> Нажмите <a th:href="@{/id{userId}(userId=${frontendData.user.id})}"> тут </a> чтобы посмотреть ваш профиль </p>
         </div>
 </body>
 </html>
